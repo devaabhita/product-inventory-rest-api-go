@@ -6,28 +6,47 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
-func ConnectDB() *sql.DB {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+var DB *sql.DB
+
+func ConnectDB() {
+	var err error
+
+	dbHost := os.Getenv("DB_HOST")
+	dbPort := os.Getenv("DB_PORT")
+	dbUser := os.Getenv("DB_USER")
+	dbPass := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
 
 	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME"))
+		dbHost, dbPort, dbUser, dbPass, dbName)
 
-	db, err := sql.Open("postgres", dsn)
+	DB, err = sql.Open("postgres", dsn)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Gagal membuka koneksi database: ", err)
 	}
 
-	if err = db.Ping(); err != nil {
-		log.Fatal(err)
+	err = DB.Ping()
+	if err != nil {
+		log.Fatal("Database tidak merespon (Ping Gagal): ", err)
 	}
 
 	fmt.Println("Database Connected!")
-	return db
+
+	// membuat tabel if table not exists
+	createTableQuery := `
+	CREATE TABLE IF NOT EXISTS products (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(100) NOT NULL,
+		price NUMERIC(10, 2) NOT NULL,
+		stock INT NOT NULL DEFAULT 0,
+		created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);`
+
+	_, err = DB.Exec(createTableQuery)
+	if err != nil {
+		log.Fatal("Gagal menjalankan auto-migration tabel: ", err)
+	}
 }

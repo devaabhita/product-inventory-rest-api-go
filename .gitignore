@@ -1,10 +1,2 @@
-# Menyembunyikan file konfigurasi lokal dan password
 .env
-
-# Menyembunyikan file biner hasil compile Go
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
 product-inventory
