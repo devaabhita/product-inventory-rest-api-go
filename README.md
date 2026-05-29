@@ -92,7 +92,7 @@ Anda tidak perlu menginstal Go atau PostgreSQL secara lokal di komputer Anda. Cu
   }
   ```
 
-  ### 3. Memperbarui Data Produk (Update Product)
+### 3. Memperbarui Data Produk (Update Product)
 
 - **Method:** `PUT`
 - **URL:** `http://localhost:8080/products/1` _(Ganti angka 1 dengan ID produk yang ingin diubah)_
