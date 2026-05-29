@@ -2,7 +2,6 @@ services:
   postgresdb:
     image: postgres:16-alpine
     container_name: inventory_postgres
-    # 👇 1. DI SINI KITA PASANG ENV_FILE-NYA
     env_file:
       - .env
     environment:
