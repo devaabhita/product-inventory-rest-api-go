@@ -32,6 +32,7 @@ func ListProducts(db *sql.DB) http.HandlerFunc {
 			products = append(products, p)
 		}
 
+		// Cegah return nilai 'null' pada JSON jika tabel database kosong
 		if products == nil {
 			products = []models.Product{}
 		}
