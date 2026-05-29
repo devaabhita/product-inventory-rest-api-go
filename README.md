@@ -17,6 +17,8 @@ Backend API RESTful untuk manajemen inventaris produk yang dibangun menggunakan 
 
 ```text
 product-inventory/
+├── cmd/                # Entrypoint utama aplikasi
+│   └── main.go
 ├── config/             # Konfigurasi aplikasi & database connection
 │   └── database.go
 ├── controllers/        # Logika bisnis / Handler HTTP API
@@ -25,7 +27,6 @@ product-inventory/
 │   └── product.go
 ├── docker-compose.yml  # Orkestrasi kontainer aplikasi & database
 ├── dockerfile          # Instruksi blueprint Docker image backend
-├── main.go             # Entrypoint utama aplikasi
 └── .env                # Konfigurasi environment variable lokal
 ```
 
