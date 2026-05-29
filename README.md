@@ -90,7 +90,3 @@ Anda tidak perlu menginstal Go atau PostgreSQL secara lokal di komputer Anda. Cu
     "stock": 10
   }
   ```
-
-```
-
-```
