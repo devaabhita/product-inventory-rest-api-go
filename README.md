@@ -83,6 +83,7 @@ Anda tidak perlu menginstal Go atau PostgreSQL secara lokal di komputer Anda. Cu
 - **URL:** `http://localhost:8080/products`
 - **Headers:** `Content-Type: application/json`
 - **Body (Raw JSON):**
+
   ```json
   {
     "name": "Laptop ASUS ROG",
@@ -90,3 +91,30 @@ Anda tidak perlu menginstal Go atau PostgreSQL secara lokal di komputer Anda. Cu
     "stock": 10
   }
   ```
+
+  ### 3. Memperbarui Data Produk (Update Product)
+
+- **Method:** `PUT`
+- **URL:** `http://localhost:8080/products/1` _(Ganti angka 1 dengan ID produk yang ingin diubah)_
+- **Headers:** `Content-Type: application/json`
+- **Body (Raw JSON):**
+
+```json
+{
+  "name": "Laptop ASUS TUF",
+  "price": 16000000,
+  "stock": 8
+}
+```
+
+### 4. Menghapus Produk (Delete Product)
+
+- **Method:** `DELETE`
+- **URL:** `http://localhost:8080/products/1` _(Ganti angka 1 dengan ID produk yang ingin dihapus)_
+- **Respon yang Diharapkan:**
+
+```json
+{
+  "message": "Produk berhasil dihapus"
+}
+```

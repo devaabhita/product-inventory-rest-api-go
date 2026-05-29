@@ -20,6 +20,8 @@ func main() {
 
 	r.HandleFunc("/products", controllers.ListProducts(db)).Methods("GET")
 	r.HandleFunc("/products", controllers.AddProduct(db)).Methods("POST")
+	r.HandleFunc("/products/{id}", controllers.UpdateProduct(db)).Methods("PUT")
+	r.HandleFunc("/products/{id}", controllers.DeleteProduct(db)).Methods("DELETE")
 
 	port := os.Getenv("PORT")
 	if port == "" {
