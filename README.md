@@ -21,7 +21,7 @@ product-inventory/
 │   └── main.go
 ├── config/             # Konfigurasi aplikasi & database connection
 │   └── database.go
-├── controllers/        # Logika bisnis / Handler HTTP API
+├── controllers/        # Logika / Handler HTTP API
 │   └── product.go
 ├── models/             # Definisi skema struktur data (Struct)
 │   └── product.go
