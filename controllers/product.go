@@ -127,9 +127,37 @@ func DeleteProduct(db *sql.DB) http.HandlerFunc {
 			http.Error(w, "Produk tidak ditemukan", http.StatusNotFound)
 			return
 		}
+		
 
 		json.NewEncoder(w).Encode(map[string]string{
 			"message": "Produk berhasil dihapus",
 		})
+	}
+}
+
+func GetProductByID(db *sql.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+
+		params := mux.Vars(r)
+		id, err := strconv.Atoi(params["id"])
+		if err != nil {
+			http.Error(w, "ID tidak valid", http.StatusBadRequest)
+			return
+		}
+
+		var p models.Product
+		query := "SELECT id, name, price, stock, created_at FROM products WHERE id = $1"
+		
+		err = db.QueryRow(query, id).Scan(&p.ID, &p.Name, &p.Price, &p.Stock, &p.CreatedAt)
+		if err == sql.ErrNoRows {
+			http.Error(w, "Produk tidak ditemukan", http.StatusNotFound)
+			return
+		} else if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		json.NewEncoder(w).Encode(p)
 	}
 }
