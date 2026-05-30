@@ -78,13 +78,32 @@ Tunggu hingga terminal menampilkan log:
 - **URL:** `http://localhost:8080/products`
 - **Respon yang Diharapkan (Jika Kosong):** `[]`
 
-### 2. Menambah Produk Baru (Create Product)
+### 2. Mengambil Satu Produk Berdasarkan ID (Get Product By ID)
+
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/products/1` *(Ganti angka 1 dengan ID produk yang ingin dicari)*
+- **Respon jika data ditemukan:**
+  ```json
+  {
+    "id": 1,
+    "name": "Laptop ASUS ROG",
+    "price": 15000000,
+    "stock": 10,
+    "created_at": "2026-05-30T19:00:00Z"
+  }
+  ```
+- **Respon jika data tidak ada:**
+  ```text
+  Produk tidak ditemukan
+  ```
+
+### 3. Menambah Produk Baru (Create Product)
 
 - **Method:** `POST`
 - **URL:** `http://localhost:8080/products`
 - **Headers:** `Content-Type: application/json`
 - **Body (Raw JSON):**
-```json
+  ```json
   {
     "name": "Laptop ASUS ROG",
     "price": 15000000,
@@ -92,13 +111,13 @@ Tunggu hingga terminal menampilkan log:
   }
   ```
 
-### 3. Memperbarui Data Produk (Update Product)
+### 4. Memperbarui Data Produk (Update Product)
 
 - **Method:** `PUT`
 - **URL:** `http://localhost:8080/products/1` *(Ganti angka 1 dengan ID produk yang ingin diubah)*
 - **Headers:** `Content-Type: application/json`
 - **Body (Raw JSON):**
-```json
+  ```json
   {
     "name": "Laptop ASUS TUF",
     "price": 16000000,
@@ -106,12 +125,12 @@ Tunggu hingga terminal menampilkan log:
   }
   ```
 
-### 4. Menghapus Produk (Delete Product)
+### 5. Menghapus Produk (Delete Product)
 
 - **Method:** `DELETE`
 - **URL:** `http://localhost:8080/products/1` *(Ganti angka 1 dengan ID produk yang ingin dihapus)*
 - **Respon yang Diharapkan:**
-```json
+  ```json
   {
     "message": "Produk berhasil dihapus"
   }
