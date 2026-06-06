@@ -13,21 +13,27 @@ Backend API RESTful untuk manajemen inventaris produk yang dibangun menggunakan 
 
 ---
 
-## Struktur Proyek
+## Project Structure
+
+Berikut adalah struktur direktori dan berkas dari proyek **PRODUCT-INVENTORY**:
 
 ```text
 product-inventory/
-├── cmd/                # Entrypoint utama aplikasi
-│   └── main.go
-├── config/             # Konfigurasi aplikasi & database connection
-│   └── database.go
-├── controllers/        # Logika / Handler HTTP API
-│   └── product.go
-├── models/             # Definisi skema struktur data (Struct)
-│   └── product.go
-├── docker-compose.yml  # Orkestrasi kontainer aplikasi & database
-├── dockerfile          # Instruksi blueprint Docker image backend
-└── .env                # Konfigurasi environment variable lokal
+├── cmd/
+│   └── main.go              # Entrypoint utama aplikasi (menjalankan server)
+├── config/
+│   └── database.go          # Konfigurasi aplikasi & koneksi database
+├── controllers/
+│   └── product.go           # Logika bisnis / Handler HTTP API untuk produk
+├── models/
+│   └── product.go           # Definisi skema struktur data (Struct) produk
+├── .dockerignore            # Berkas dan folder yang diabaikan oleh Docker
+├── .env                     # Konfigurasi environment variable lokal
+├── .gitignore               # Berkas dan folder yang diabaikan oleh Git
+├── docker-compose.yml       # Orkestrasi kontainer aplikasi & database
+├── dockerfile               # Instruksi blueprint Docker image backend
+├── go.mod                   # Berkas manajemen modul dan dependensi Go
+└── go.sum                   # Berkas checksum untuk verifikasi dependensi Go
 ```
 
 ---
