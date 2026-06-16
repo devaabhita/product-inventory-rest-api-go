@@ -1,6 +1,6 @@
 # Product Inventory REST API
 
-Backend API RESTful untuk manajemen inventaris produk yang dibangun menggunakan bahasa pemrograman **Go (Golang)** dan database **PostgreSQL**. Proyek ini dirancang menggunakan arsitektur yang bersih (*clean structure*) dan sepenuhnya diorkestrasi menggunakan **Docker & Docker Compose** untuk kemudahan *deployment*.
+Backend API RESTful untuk manajemen inventaris produk yang dibangun menggunakan bahasa pemrograman **Go (Golang)** dan database **PostgreSQL**. Proyek ini dirancang menggunakan arsitektur yang bersih (*clean structure*) dan sepenuhnya diorkestrasi menggunakan **Docker & Docker Compose** untuk kemudahan *deployment*. produk ini dijalankan pada **postman**.
 
 ---
 
